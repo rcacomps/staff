@@ -1,41 +1,62 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<title>RCA Scrambler</title>
-		<link rel="icon" href="favicon.ico">
 		<style>
 			@font-face{font-family:b;src: url(f/b.otf)}
 			@font-face{font-family:i;src: url(f/i.otf)}
 			@font-face{font-family:l;src: url(f/l.otf)}
 			@font-face{font-family:r;src: url(f/r.otf)}
-			.A1{position:absolute;height:10vh;width:100vw;background-image:radial-gradient(#55f,#22a);left:0%;top:0%;}
-			a{text-decoration:none;color:black;font-family:r;}
-			.A7{position:absolute;font-size:24px;left:44%;top:-5%;}
-			.A3{position:absolute;top:2vh;border:10px solid #C64;background-color:#C64;}
-			.A4{left:1.2%;}
-			.A5{right:30.8%;}body{background-attachment:fixed;background-image:radial-gradient(#aaa,#455);overflow-x:hidden;}
-			.results{background-color:#EEE;position:absolute;border:2px solid black;top:12%;right:2%;width:15%;}ol{color:green;font-family:b;}
-			.wintitle{position:relative;left:13%;font:14pt b;}
-			.solvebox{position:absolute;left:5%;top:12%;font-family:r;background-color:rgba(0,0,0,0);width:75%}
-			.breakdown{position:relative;background:white;border:2px solid black;border-collapse:collapse;}
-			.scramble,.person,.times,.event{border:1px solid black;}
-			h1,h2,h3,h4{font-family:b;}.scramble{font-size:8pt;}
-			.two{font-size:10pt;}
-			.times,.podtitle{text-align:center;}
-			.alllink{position:absolute;top:10%;}
+			h1,h2,h3,h4,h5{font-family:b;text-align:auto;}
+			p{font-family:r;}
+			.header{position:absolute;height:10%;width:100vw;background-image:radial-gradient(#55f,#22a);left:0%;top:0%;}
+			a{text-decoration:none;color:black;font-family:r;display:block;}
+			.scrams{margin:3%;background-color:#8bf;width:40%;}
+			.title{font-family:b;width:100vw;position:absolute;top:-3vh;font-size:2vw;text-align:center;}
+			#name,#email{width:15%;}
+			body{height:100%;margin:0;background-attachment:fixed;background-image:radial-gradient(#aaa,#455);overflow-x:hidden;}
 		</style>
 	</head>
 	<body>
 		<table>
-			<tr class="A1">
-				<td class="A2"><a href="/Users/patri/Documents/Github/results/index.html" target="_blank" class="A3 A4">Return to User View</a></td>
-				<td class="A6"><h3 class="A7">RCA Staff Portal</h3></td>
+			<tr class="header">
+				<td class="titlebox">
+					<div class="title">
+						<h3>RCA Competition #33 Scrambles</h3>
+					</div>
+				</td>
 			</tr>
 		</table>
 		<br>
 		<br>
 		<div class="scrams">
-			<a class="alllink" href="all.html">Generate Entire List of Scrambles</a>
+			<form action="mailto:fourcryingjohnnies@gmail.com" method="post" enctype="application/x-www-form-urlencoded">
+				<br><h2>Submit Your Results</h2>
+			    <input type="text" name="name" id="name" placeholder="Username"/><br><br>
+			    <input type="text" name="email" id="email" placeholder="Email"/>
+			    <h5>If you did not participate in an event, leave that section blank.<br>Do not add parentheses () around your highest and lowest times.<br>Our system will automatically calculate all of this.</h5>
+			  	3x3<input placeholder="Time 1 Time 2, etc."/><br>
+			  	2x2<input placeholder="Time 1, Time 2, etc."/><br>
+			  	4x4<input placeholder="Time 1, Time 2, etc."/><br>
+			  	5x5<input placeholder="Time 1, Time 2, etc."/><br>
+			  	6x6<input placeholder="Time 1, Time 2, etc."/><br>
+			  	7x7<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Square-1<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Megaminx<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Kilominx<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Clock<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Skewb<input placeholder="Time 1, Time 2, etc."/><br>
+			  	3BLD<input placeholder="Time 1, Time 2, etc."/><br>
+			  	FMC<input placeholder="Time 1, Time 2, etc."/><br>
+			  	3OH<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Pyraminx<input placeholder="Time 1, Time 2, etc."/><br>
+			  	2BLD<input placeholder="Time 1, Time 2, etc."/><br>
+			  	Mirror Blocks<input placeholder="Time 1, Time 2, etc."/><br>
+			  	2-4 Relay<input placeholder="Time in total"/><br>
+			    <input type="submit" name="submit" value="Send" />
+			  </div>
+			</form>
 		</div>
 	</body>
 </html>
