@@ -1,38 +1,27 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 		<title>RCA Scrambler</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-			@font-face{font-family:b;src: url(f/b.otf)}
-			@font-face{font-family:i;src: url(f/i.otf)}
-			@font-face{font-family:l;src: url(f/l.otf)}
-			@font-face{font-family:r;src: url(f/r.otf)}
-			h1,h2,h3,h4,h5{font-family:b;text-align:auto;}
-			p{font-family:r;}
-			.header{position:absolute;height:10%;width:100vw;background-image:radial-gradient(#55f,#22a);left:0%;top:0%;}
-			a{text-decoration:none;color:black;font-family:r;display:block;}
-			.scrams{margin:3%;background-color:#8bf;width:50%;}
-			iframe{margin:auto;}
-			.title{font-family:b;width:100vw;position:absolute;top:-3vh;font-size:2vw;text-align:center;}
-			body{height:100%;margin:0;background-attachment:fixed;background-image:radial-gradient(#aaa,#455);overflow-x:hidden;}
-		</style>
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	</head>
 	<body>
-		<table>
-			<tr class="header">
-				<td class="titlebox">
-					<div class="title">
-						<h3>RCA Competition #33 Scrambles</h3>
-					</div>
-				</td>
-			</tr>
-		</table>
-		<br>
-		<br>
-		<div class="scrams">
-			<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfFkgm0-vpW4vD0mPiadF90HmldMyMTNeiZSEThzJTvpC-rEw/viewform?embedded=true" width="640" height="3400" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-		</div>
+		<form id="times">
+			<input type="text" name="entry.487258260" placeholder="Event">
+			<input type="text" name="entry.1428779617" placeholder="Time">
+			<input type="submit" value="submit">
+		</form>
+		<script>
+			$("#times").submit(function(e) {
+			    e.preventDefault();
+			    var form = $(this);
+			    $.ajax({
+			           type: "POST",
+			           url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScxi7qs2336lNk-YSyhBpk3Z4W5yvks41xzxeV0EKmXnxLcGw/formResponse",
+			           data: form.serialize(),
+			         });
+			    $("#times")[0].reset();
+			});
+
+		</script>
 	</body>
 </html>
