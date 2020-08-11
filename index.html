@@ -3,25 +3,40 @@
 	<head>
 		<title>RCA Scrambler</title>
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	</head>
+		<style>
+			body{color:#ccc;background-color:#444;font-family:verdana;}
+			#submittime,#submitbtn{display:none;}
+		</style>
+	 </head>
 	<body>
 		<form id="times">
-			<input type="text" name="entry.487258260" placeholder="Event">
-			<input type="text" name="entry.1428779617" placeholder="Time">
-			<input type="submit" value="submit">
-		</form>
+			<input type="text" id="submitevent" name="entry.487258260" placeholder="Event">
+			<input type="text" id="submitname" name="entry.487258260" placeholder="Name"><p>Entering a space in the box above triggers the timer.</p>
+			<input type="text" id="submittime" name="entry.1428779617" placeholder="Time">
+			<input type="submit" id="submitbtn" value="submit">
+		 </form>
+		<h1 id="display">Hold Space to Start Timer</h1>
 		<script>
-			$("#times").submit(function(e) {
-			    e.preventDefault();
-			    var form = $(this);
-			    $.ajax({
-			           type: "POST",
-			           url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScxi7qs2336lNk-YSyhBpk3Z4W5yvks41xzxeV0EKmXnxLcGw/formResponse",
-			           data: form.serialize(),
-			         });
-			    $("#times")[0].reset();
-			});
-
-		</script>
+			document.getElementById("submitname").value = localStorage.getItem("usrname");
+			document.getElementById("submitevent").value = localStorage.getItem("event");
+			var myTimer,timeElapsed=0,differentiate=0,instance=0;;
+			document.body.onkeyup=function(e){32==e.keyCode&&0==differentiate&&(start(),differentiate=1)},
+			document.body.onkeydown=function(e){32==e.keyCode&&(differentiate=1==differentiate?(stop(),2):(reset(),0))};
+			function tick(){timeElapsed+=.01,document.getElementById("display").innerHTML=Math.round(100*timeElapsed)/100}
+			function start(){0==instance&&(myTimer=setInterval(tick,10),instance=1)}
+			function stop(){
+				clearInterval(myTimer),instance=0,
+				document.getElementById("submittime").value = Math.round(100*timeElapsed)/100;
+				localStorage.setItem("usrname",document.getElementById("submitname").value);
+				localStorage.setItem("event",document.getElementById("submitevent").value);
+				    var form = $("#times");
+				    $.ajax({
+				           type: "POST",
+				           url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLScxi7qs2336lNk-YSyhBpk3Z4W5yvks41xzxeV0EKmXnxLcGw/formResponse",
+				           data: form.serialize(),
+				         });
+			}
+			function reset(){document.getElementById("display").innerHTML="Ready",timeElapsed=0}
+		 </script>
 	</body>
 </html>
